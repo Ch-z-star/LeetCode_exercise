@@ -1,0 +1,31 @@
+class Solution {
+    public int numIdenticalPairs(int[] nums) {
+    
+       int count = 0;
+       for(int i = 0;i < nums.length;i++)
+         for(int j = i+1;j < nums.length;j++)
+            if(nums[i] == nums[j])
+                count++;
+        return count;
+    }
+}
+
+//时间复杂度为O(n)的解法
+/*
+**利用哈希表储存数组中出现重复数对的次数，
+**根据排列组合C2n = v*(v-1)/2计算
+ class Solution {
+    public int numIdenticalPairs(int[] nums) {
+        Map<Integer, Integer> m = new HashMap<Integer, Integer>();
+        for (int num : nums) {
+            m.put(num, m.getOrDefault(num, 0) + 1);
+        }
+        int ans = 0;
+        for (Map.Entry<Integer, Integer> entry : m.entrySet()) {
+            int v = entry.getValue();
+            ans += v * (v - 1) / 2;
+        }
+        return ans;
+    }
+}
+*/
